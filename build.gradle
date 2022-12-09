@@ -35,11 +35,12 @@ description = 'RestAssuredApiTesting'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 tasks.withType(Test) {
+    systemProperty 'key', System.getProperty('key')
+    systemProperty 'token', System.getProperty('token')
     useTestNG()
 }
 
 def negativeTests = tasks.register("negativetests", Test).configure() {
-
     filter {
         includeTestsMatching("negativeTests*")
     }

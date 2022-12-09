@@ -5,9 +5,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 import java.util.Random;
 
 import static utils.JsonConverter.convertJsonNodeToObject;
@@ -46,15 +43,5 @@ public class StringUtils {
     public static <T> T getObjectFromJson(String jsonString, Class<T> clazz) {
         JsonNode jsonNode = convertJsonStringToNode(jsonString);
         return convertJsonNodeToObject(jsonNode, clazz);
-    }
-
-    public static String getProperty(String value) throws IOException {
-        InputStream input = StringUtils.class.getClassLoader().getResourceAsStream("credential.properties");
-        Properties properties = new Properties();
-        if (input == null) {
-            System.out.println("Sorry, unable to find " + "credential.properties");
-        }
-        properties.load(input);
-        return properties.getProperty(value);
     }
 }

@@ -12,7 +12,6 @@ import utils.StringUtils;
 import java.io.IOException;
 
 import static io.restassured.RestAssured.given;
-import static utils.StringUtils.getProperty;
 
 public class BaseTest {
 
@@ -28,8 +27,8 @@ public class BaseTest {
                 .addFilter(new AllureRestAssured())
                 .build();
 
-        key = getProperty("key");
-        token = getProperty("token");
+        key = System.getProperty("key");
+        token = System.getProperty("token");
     }
 
     @Step("Request to Trello API to create {listName} List within {boardName} Board with id:{boardId}")
