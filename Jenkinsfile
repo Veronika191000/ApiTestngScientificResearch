@@ -25,7 +25,7 @@ pipeline {
                 sh './gradlew clean smoketests -Dkey=$KEY -Dtoken=$TOKEN'
              }
          }
-         stage('api trello smoke') {
+         stage('api trello regression') {
               when {
                  expression { return params.regression }
               }
