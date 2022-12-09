@@ -16,28 +16,25 @@ pipeline {
      }
 
      stages {
-         when {
-            expression { return params.smoke }
+         stage('api trello smoke') {
+             when {
+                expression { return params.smoke }
+             }
+             steps {
+                sh 'chmod +x gradlew'
+                sh './gradlew clean smoketests -Dkey=$KEY -Dtoken=$TOKEN'
+             }
          }
          stage('api trello smoke') {
-            steps {
-               sh 'chmod +x gradlew'
-               sh './gradlew clean smoketests -Dkey=$KEY -Dtoken=$TOKEN'
-            }
-         }
-     }
-
-      stages {
               when {
                  expression { return params.regression }
               }
-              stage('api trello smoke') {
-                 steps {
-                    sh 'chmod +x gradlew'
-                    sh './gradlew clean regressiontests -Dkey=$KEY -Dtoken=$TOKEN'
-                 }
+              steps {
+                 sh 'chmod +x gradlew'
+                 sh './gradlew clean regressiontests -Dkey=$KEY -Dtoken=$TOKEN'
               }
-          }
+         }
+      }
 
      post {
              always {
