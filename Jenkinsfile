@@ -1,5 +1,9 @@
 pipeline {
      agent any
+     environment {
+         KEY = credentials('key')
+         TOKEN = credentials('token')
+     }
 
      tools {
          jdk '1.8'
@@ -10,7 +14,7 @@ pipeline {
          stage('api trello negative') {
             steps {
                sh 'chmod +x gradlew'
-               sh './gradlew clean negativetests'
+               sh './gradlew clean negativetests -Dkey=$KEY -Dtoken=$TOKEN'
             }
          }
      }
