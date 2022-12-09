@@ -5,19 +5,39 @@ pipeline {
          TOKEN = credentials('token')
      }
 
+    parameters {
+        booleanParam(defaultValue: true, description: 'run smoke tests', name: 'smoke')
+        booleanParam(defaultValue: false, description: 'run regression tests', name: 'regression')
+    }
+
      tools {
          jdk '1.8'
          gradle '7.4.2'
      }
 
      stages {
-         stage('api trello negative') {
+         when {
+            expression { return params.smoke }
+         }
+         stage('api trello smoke') {
             steps {
                sh 'chmod +x gradlew'
-               sh './gradlew clean negativetests -Dkey=$KEY -Dtoken=$TOKEN'
+               sh './gradlew clean smoketests -Dkey=$KEY -Dtoken=$TOKEN'
             }
          }
      }
+
+      stages {
+              when {
+                 expression { return params.regression }
+              }
+              stage('api trello smoke') {
+                 steps {
+                    sh 'chmod +x gradlew'
+                    sh './gradlew clean regressiontests -Dkey=$KEY -Dtoken=$TOKEN'
+                 }
+              }
+          }
 
      post {
              always {

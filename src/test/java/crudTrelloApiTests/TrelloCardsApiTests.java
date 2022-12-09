@@ -1,4 +1,4 @@
-package positiveTests;
+package crudTrelloApiTests;
 
 import baseTest.BaseTest;
 import io.qameta.allure.Description;

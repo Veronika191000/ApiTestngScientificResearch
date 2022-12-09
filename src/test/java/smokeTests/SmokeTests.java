@@ -1,4 +1,4 @@
-package negativeTests;
+package smokeTests;
 
 import baseTest.BaseTest;
 import io.qameta.allure.Description;
@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import static utils.StringUtils.*;
 
-public class NegativeApiTests extends BaseTest {
+public class SmokeTests extends BaseTest {
 
     @Test
     @Description("Verify getting board with incorrect board id")

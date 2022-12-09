@@ -40,23 +40,22 @@ tasks.withType(Test) {
     useTestNG()
 }
 
-def negativeTests = tasks.register("negativetests", Test).configure() {
+/*def negativeTests = tasks.register("negativetests", Test).configure() {
     filter {
         includeTestsMatching("negativeTests*")
     }
-    //   dependsOn("positivetests")
-}
+}*/
 
-def positiveTests = tasks.register("positivetests", Test).configure() {
+def smokeTests = tasks.register("smoketests", Test).configure() {
     filter {
-        includeTestsMatching("positiveTests*")
+        includeTestsMatching("smokeTests*")
     }
 }
 
 tasks.register("regress", Test).configure() {
     filter {
-        includeTestsMatching("negativeTests*")
-        includeTestsMatching("positiveTests*")
+        includeTestsMatching("smokeTests*")
+        includeTestsMatching("crudTrelloApiTests*")
     }
     // if we need to specify the test run order
     //  tasks.getByName("negativetests").shouldRunAfter("positivetests")
