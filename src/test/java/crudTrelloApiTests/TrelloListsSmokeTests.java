@@ -18,7 +18,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static utils.StringUtils.getObjectFromJson;
 
-public class TrelloListsApiTests extends BaseTest {
+public class TrelloListsSmokeTests extends BaseTest {
 
     String boardName;
     BoardDetails expectedBoardDetails;

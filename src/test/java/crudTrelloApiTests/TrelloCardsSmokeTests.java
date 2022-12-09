@@ -15,7 +15,7 @@ import java.io.IOException;
 
 import static utils.StringUtils.getObjectFromJson;
 
-public class TrelloCardsApiTests extends BaseTest {
+public class TrelloCardsSmokeTests extends BaseTest {
     String boardName;
     BoardDetails expectedBoardDetails;
     String listName = "List of Tasks";

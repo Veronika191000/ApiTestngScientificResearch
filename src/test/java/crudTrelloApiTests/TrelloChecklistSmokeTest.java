@@ -18,7 +18,7 @@ import java.util.List;
 
 import static utils.StringUtils.getObjectFromJson;
 
-public class TrelloChecklistApiTest extends BaseTest {
+public class TrelloChecklistSmokeTest extends BaseTest {
     String boardName;
     BoardDetails expectedBoardDetails;
     String listName = "List of Tasks";

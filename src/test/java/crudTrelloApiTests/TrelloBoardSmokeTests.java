@@ -13,7 +13,7 @@ import java.io.IOException;
 
 import static utils.StringUtils.getObjectFromJson;
 
-public class TrelloBoardApiTests extends BaseTest {
+public class TrelloBoardSmokeTests extends BaseTest {
 
     @Test
     @Description("Verify board can be successfully created")
@@ -81,16 +81,6 @@ public class TrelloBoardApiTests extends BaseTest {
         Response createdBoard = requestToCreateBoard(boardName);
         BoardDetails expectedBoardDetails = getObjectFromJson(createdBoard.asString(), BoardDetails.class);
 
-        //delete board
-        requestToRemoveBoard(expectedBoardDetails.getId());
-    }
-
-    @Test
-    @Description("Verify board can be successfully found in list of boards")
-    public void verifySearchFunction() throws IOException {
-        //create board
-        Response createdBoard = requestToCreateBoard(StringUtils.createBoardName());
-        BoardDetails expectedBoardDetails = getObjectFromJson(createdBoard.asString(), BoardDetails.class);
         //delete board
         requestToRemoveBoard(expectedBoardDetails.getId());
     }

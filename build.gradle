@@ -48,14 +48,14 @@ tasks.withType(Test) {
 
 def smokeTests = tasks.register("smoketests", Test).configure() {
     filter {
-        includeTestsMatching("smokeTests*")
+        includeTestsMatching("crudTrelloApiTests*")
     }
 }
 
 tasks.register("regress", Test).configure() {
     filter {
-        includeTestsMatching("smokeTests*")
         includeTestsMatching("crudTrelloApiTests*")
+        includeTestsMatching("negativeTests*")
     }
     // if we need to specify the test run order
     //  tasks.getByName("negativetests").shouldRunAfter("positivetests")
